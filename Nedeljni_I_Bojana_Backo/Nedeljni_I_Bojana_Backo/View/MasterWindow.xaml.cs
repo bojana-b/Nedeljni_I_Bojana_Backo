@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Nedeljni_I_Bojana_Backo
+namespace Nedeljni_I_Bojana_Backo.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MasterWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MasterWindow : Window
     {
-        public MainWindow()
+        public MasterWindow()
         {
             InitializeComponent();
         }
