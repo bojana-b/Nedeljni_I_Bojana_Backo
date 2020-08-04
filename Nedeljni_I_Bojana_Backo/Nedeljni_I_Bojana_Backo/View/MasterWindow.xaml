@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nedeljni_I_Bojana_Backo.View"
         mc:Ignorable="d"
-        Title="MasterWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Master Window" Background="AntiqueWhite" Height="450" Width="800" FontSize="14">
+    <Grid Margin="30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label>Name:</Label>
+        <TextBox Grid.Column="1"  Margin="0,0,0,20"/>
+        <Label Grid.Row="1">E-mail:</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,20"/>
+        <Label Grid.Row="2">Comment:</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" AcceptsReturn="True" />
     </Grid>
 </Window>
