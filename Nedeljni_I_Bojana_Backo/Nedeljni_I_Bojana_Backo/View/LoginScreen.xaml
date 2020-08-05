@@ -11,10 +11,10 @@
             <Label Content="Login" Foreground="Gray" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label Content="Username" Foreground="Gray"/>
-            <TextBox Name="txtUsername" Background="RosyBrown" Foreground="White" FontSize="18"/>
+            <TextBox Text="{Binding UserName, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" Name="txtUsername" Background="RosyBrown" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="Gray"/>
             <PasswordBox Name="txtPassword" Background="RosyBrown" Foreground="White" FontSize="18"/>
-            <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="60 10" Background="RosyBrown" Foreground="White"/>
+            <Button Name="btnSubmit" Command="{Binding Submit}" CommandParameter="{Binding ElementName=txtPassword}" Content="Submit" Margin="60 10" Background="RosyBrown" Foreground="White"/>
         </StackPanel>
     </Border>
 </Window>

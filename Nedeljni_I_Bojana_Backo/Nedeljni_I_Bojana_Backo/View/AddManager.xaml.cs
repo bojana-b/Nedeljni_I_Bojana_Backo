@@ -1,18 +1,17 @@
 ﻿using Nedeljni_I_Bojana_Backo.ViewModel;
-using System;
 using System.Windows;
 
 namespace Nedeljni_I_Bojana_Backo.View
 {
     /// <summary>
-    /// Interaction logic for LoginScreen.xaml
+    /// Interaction logic for AddManager.xaml
     /// </summary>
-    public partial class LoginScreen : Window
+    public partial class AddManager : Window
     {
-        public LoginScreen()
+        public AddManager()
         {
             InitializeComponent();
-            this.DataContext = new LoginScreenViewModel(this);
+            this.DataContext = new AddManagerViewModel(this);
         }
     }
 }

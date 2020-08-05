@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nedeljni_I_Bojana_Backo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Nedeljni_I_Bojana_Backo.View
         public MasterWindow()
         {
             InitializeComponent();
+            this.DataContext = new MasterWindowViewModel(this);
         }
     }
 }

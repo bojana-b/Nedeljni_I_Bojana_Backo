@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,7 +65,51 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="ModelCompany.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCompany.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCompany.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCompany.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCompany.edmx</DependentUpon>
+    </Compile>
     <Compile Include="SecurePasswordHasher.cs" />
+    <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="tblAdmin.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblManager.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPosition.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProject.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSector.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblWorker.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AddManagerViewModel.cs" />
+    <Compile Include="ViewModel\LoginScreenViewModel.cs" />
+    <Compile Include="ViewModel\MasterWindowViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AddManager.xaml.cs">
+      <DependentUpon>AddManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
@@ -67,6 +120,19 @@
     <Compile Include="View\MasterWindow.xaml.cs">
       <DependentUpon>MasterWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vwAdmin.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwManager.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwWorker.cs">
+      <DependentUpon>ModelCompany.tt</DependentUpon>
+    </Compile>
+    <Page Include="View\AddManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +160,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="ModelCompany.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCompany.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelCompany.edmx.diagram">
+      <DependentUpon>ModelCompany.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,5 +176,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelCompany.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelCompany.Context.cs</LastGenOutput>
+      <DependentUpon>ModelCompany.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelCompany.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCompany.edmx</DependentUpon>
+      <LastGenOutput>ModelCompany.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
