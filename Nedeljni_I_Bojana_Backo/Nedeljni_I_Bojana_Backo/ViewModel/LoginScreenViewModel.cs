@@ -1,4 +1,5 @@
 ﻿using Nedeljni_I_Bojana_Backo.Command;
+using Nedeljni_I_Bojana_Backo.Services;
 using Nedeljni_I_Bojana_Backo.View;
 using System;
 using System.Windows;
@@ -11,15 +12,29 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
     {
         LoginScreen loginScreen;
         //PasswordValidation passwordValidation;
-        //Service service;
+        ServiceManager serviceManager;
 
         public LoginScreenViewModel(LoginScreen loginScreenOpen)
         {
             loginScreen = loginScreenOpen;
 
             //passwordValidation = new PasswordValidation();
-            //user = new tblUser();
-            //service = new Service();
+            manager = new vwManager();
+            serviceManager = new ServiceManager();
+        }
+        #region Properties
+        private vwManager manager;
+        public vwManager Manager
+        {
+            get
+            {
+                return manager;
+            }
+            set
+            {
+                manager = value;
+                OnPropertyChanged("Manager");
+            }
         }
 
         private tblUser user;
@@ -64,7 +79,9 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
                 return string.Empty;
             }
         }
+        #endregion
 
+        #region Commands
         private ICommand submit;
         public ICommand Submit
         {
@@ -87,14 +104,19 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
 
                 if (UserName.Equals("WPFMaster") && password.Equals("WPFAccess"))
                 {
-                    //string hash = SecurePasswordHasher.Hash(password);
-                    //User.Username = UserName;
-                    //User.Password = hash;
-                    //service.AddUser(User);
-
                     MasterWindow master = new MasterWindow();
                     loginScreen.Close();
-                    master.Show();
+                    master.ShowDialog();
+                }
+                else if (serviceManager.IsUser(UserName))
+                {
+                    Manager = serviceManager.FindManager(UserName);
+                    if(SecurePasswordHasher.Verify(password, Manager.UserPassword) || password == Manager.ReservedPassword)
+                    {
+                        ManagerWindow managerWindow = new ManagerWindow();
+                        loginScreen.Close();
+                        managerWindow.ShowDialog();
+                    }
                 }
                 else
                 {
@@ -111,4 +133,5 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
             return true;
         }
     }
+    #endregion
 }

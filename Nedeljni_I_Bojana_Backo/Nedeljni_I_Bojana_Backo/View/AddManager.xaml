@@ -15,7 +15,7 @@
             <sys:String>X</sys:String>
         </x:Array>
         <x:Array Type="sys:String" x:Key="Marrige">
-            <sys:String>MUnmarried</sys:String>
+            <sys:String>Unmarried</sys:String>
             <sys:String>Married</sys:String>
             <sys:String>Divorced</sys:String>
         </x:Array>
@@ -54,8 +54,8 @@
                 <TextBox Background="RosyBrown" Foreground="White" 
                          Text="{Binding Manager.Username, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock>Password:</TextBlock>
-                <TextBox Background="RosyBrown" Foreground="White" 
-                         Text="{Binding Manager.UserPassword, UpdateSourceTrigger=PropertyChanged}"/>
+                <PasswordBox Name="txtPassword" Background="RosyBrown" Foreground="White" FontSize="18"/>
+                
                 <TextBlock>Email:</TextBlock>
                 <TextBox Background="RosyBrown" Foreground="White" 
                          Text="{Binding Manager.Email, UpdateSourceTrigger=PropertyChanged}"/>
@@ -73,9 +73,9 @@
                 <TextBlock>OfficeNumber:</TextBlock>
                 <TextBox Background="RosyBrown" Foreground="White" 
                          Text="{Binding Manager.OfficeNumber, UpdateSourceTrigger=PropertyChanged}"/>
-                
-                <Button  Margin="80, 20" Command="{Binding Save}">Save</Button>
-                <Button Margin="80, 10">Cancel</Button>
+
+                <Button  Margin="80, 20" Command="{Binding Save}" CommandParameter="{Binding ElementName=txtPassword}">Save</Button>
+                <Button Margin="80, 10" Command="{Binding Cancel}">Cancel</Button>
             </StackPanel>
         </GroupBox>
     </Grid>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Nedeljni_I_Bojana_Backo.ViewModel
@@ -15,12 +16,14 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
     {
         AddManager addManager;
         ServiceManager serviceManager;
+        HintPasswordValidation hintPasswordValidation;
 
         public AddManagerViewModel(AddManager addManagerOpen)
         {
             addManager = addManagerOpen;
             serviceManager = new ServiceManager();
             Manager = new vwManager();
+            hintPasswordValidation = new HintPasswordValidation();
         }
 
         #region Properties
@@ -48,18 +51,31 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
             {
                 if (save == null)
                 {
-                    save = new RelayCommand(param => SaveExecute(), param => CanSaveExecute());
+                    save = new RelayCommand(SaveExecute, CanSaveExecute);
                 }
                 return save;
             }
         }
-        private void SaveExecute()
+        private void SaveExecute(object obj)
         {
             try
             {
+                if (!JMBGValidation.IsValid(Manager.JMBG))
+                {
+                    MessageBox.Show("JMBG is not valid");
+                    return;
+                }
+                else if (!hintPasswordValidation.PasswordOk(Manager.ReservedPassword))
+                {
+                    MessageBox.Show("Password Hint must contain at least 5 caracters!");
+                    return;
+                }
+                string password = (obj as PasswordBox).Password;
+                Manager.UserPassword = password;
                 LoginScreen login = new LoginScreen();
                 serviceManager.AddManager(Manager);
                 addManager.Close();
+                MessageBox.Show("Account created!");
                 login.ShowDialog();
             }
             catch (Exception ex)
@@ -68,7 +84,50 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
             }
         }
 
-        private bool CanSaveExecute()
+        private bool CanSaveExecute(object obj)
+        {
+            if (String.IsNullOrEmpty(Manager.FirstName) || String.IsNullOrEmpty(Manager.LastName)
+                || String.IsNullOrEmpty(Manager.JMBG) || String.IsNullOrEmpty(Manager.Gender)
+                || String.IsNullOrEmpty(Manager.Residence) || String.IsNullOrEmpty(Manager.MarriageStatus)
+                || String.IsNullOrEmpty(Manager.Email) || String.IsNullOrEmpty(Manager.ReservedPassword)
+                || String.IsNullOrEmpty(Manager.LevelOfResponsibility)
+                || String.IsNullOrEmpty(Manager.OfficeNumber)
+                || String.IsNullOrEmpty(Manager.Username) || (obj as PasswordBox) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        // Cancel Button
+        private ICommand cancel;
+        public ICommand Cancel
+        {
+            get
+            {
+                if (cancel == null)
+                {
+                    cancel = new RelayCommand(param => CancelExecute(), param => CanCancelExecute());
+                }
+                return cancel;
+            }
+        }
+        private void CancelExecute()
+        {
+            try
+            {
+                LoginScreen login = new LoginScreen();
+                addManager.Close();
+                login.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanCancelExecute()
         {
             return true;
         }

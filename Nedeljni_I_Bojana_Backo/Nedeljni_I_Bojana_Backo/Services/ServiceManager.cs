@@ -9,6 +9,7 @@ namespace Nedeljni_I_Bojana_Backo.Services
 {
     class ServiceManager
     {
+        // Method that add Manager to database
         public void AddManager(vwManager manager)
         {
             try
@@ -24,7 +25,7 @@ namespace Nedeljni_I_Bojana_Backo.Services
                     newUser.Residence = manager.Residence;
                     newUser.MarriageStatus = manager.MarriageStatus;
                     newUser.Username = manager.Username;
-                    newUser.UserPassword = manager.UserPassword;
+                    newUser.UserPassword = SecurePasswordHasher.Hash(manager.UserPassword);
 
                     context.tblUsers.Add(newUser);
                     context.SaveChanges();
@@ -46,6 +47,66 @@ namespace Nedeljni_I_Bojana_Backo.Services
             catch (Exception ex)
             {
                 Debug.WriteLine("Exception" + ex.Message.ToString());
+            }
+        }
+        // Method that reads all Managers from database
+        public List<vwManager> GetAllManagers()
+        {
+            try
+            {
+                using (CompanyDBEntities context = new CompanyDBEntities())
+                {
+                    List<vwManager> list = new List<vwManager>();
+                    list = (from x in context.vwManagers select x).ToList();
+                    return list;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+        // Methot to check if Manager username exists in database
+        public bool IsUser(string username)
+        {
+            try
+            {
+                using (CompanyDBEntities context = new CompanyDBEntities())
+                {
+                    vwManager manager = (from e in context.vwManagers where e.Username == username select e).First();
+
+                    if (manager == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+                return false;
+            }
+        }
+
+        public vwManager FindManager(string username)
+        {
+            try
+            {
+                using (CompanyDBEntities context = new CompanyDBEntities())
+                {
+                    vwManager manager = (from e in context.vwManagers where e.Username == username select e).First();
+                    return manager;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
             }
         }
     }

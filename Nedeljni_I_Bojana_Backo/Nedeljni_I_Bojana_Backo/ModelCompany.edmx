@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CompanyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CompanyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAdmin">
           <Key>
             <PropertyRef Name="AdminID" />
@@ -71,7 +71,7 @@
           <Property Name="Residence" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="MarriageStatus" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="UserPassword" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="tblWorker">
           <Key>
@@ -343,8 +343,7 @@ warning 6002: The table/view 'CompanyDB.dbo.vwWorker' does not have a primary ke
             <End Role="tblWorker" EntitySet="tblWorker" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CompanyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -420,7 +419,7 @@ warning 6002: The table/view 'CompanyDB.dbo.vwWorker' does not have a primary ke
           <Property Name="Residence" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MarriageStatus" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblAdmins" Relationship="Self.FK__tblAdmin__UserID__239E4DCF" FromRole="tblUser" ToRole="tblAdmin" />
           <NavigationProperty Name="tblManagers" Relationship="Self.FK__tblManage__UserI__20C1E124" FromRole="tblUser" ToRole="tblManager" />
           <NavigationProperty Name="tblWorkers" Relationship="Self.FK__tblWorker__UserI__1B0907CE" FromRole="tblUser" ToRole="tblWorker" />
