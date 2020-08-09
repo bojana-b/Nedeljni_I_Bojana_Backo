@@ -50,6 +50,66 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
         {
             return true;
         }
+        // CreateEmployee Button
+        private ICommand createEmployee;
+        public ICommand CreateEmployee
+        {
+            get
+            {
+                if (createEmployee == null)
+                {
+                    createEmployee = new RelayCommand(param => createEmployeeExecute(), param => CancreateEmployeeExecute());
+                }
+                return createEmployee;
+            }
+        }
+        private void createEmployeeExecute()
+        {
+            try
+            {
+                SignupEmployee signupEmployee = new SignupEmployee();
+                masterWindow.Close();
+                signupEmployee.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CancreateEmployeeExecute()
+        {
+            return true;
+        }
+        // CreateAdmin Button
+        private ICommand createAdmin;
+        public ICommand CreateAdmin
+        {
+            get
+            {
+                if (createAdmin == null)
+                {
+                    createAdmin = new RelayCommand(param => createAdminExecute(), param => CanCreateAdminExecute());
+                }
+                return createAdmin;
+            }
+        }
+        private void createAdminExecute()
+        {
+            try
+            {
+                AddAdmin addAdmin = new AddAdmin();
+                masterWindow.Close();
+                addAdmin.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanCreateAdminExecute()
+        {
+            return true;
+        }
         // Logout Button
         private ICommand logout;
         public ICommand Logout

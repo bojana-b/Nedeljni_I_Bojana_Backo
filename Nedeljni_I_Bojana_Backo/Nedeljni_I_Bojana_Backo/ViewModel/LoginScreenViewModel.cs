@@ -14,12 +14,15 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
         LoginScreen loginScreen;
         ManagerPassword managerPassword;
         ServiceManager serviceManager;
+        SeerviceAdmin seerviceAdmin;
 
         public LoginScreenViewModel(LoginScreen loginScreenOpen)
         {
             loginScreen = loginScreenOpen;
             manager = new vwManager();
+            admin = new vwAdmin();
             serviceManager = new ServiceManager();
+            seerviceAdmin = new SeerviceAdmin();
 
             managerPassword = new ManagerPassword();
             managerPassword.ApplicationStarted += WriteRandomStrToFile;
@@ -37,6 +40,20 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
             {
                 manager = value;
                 OnPropertyChanged("Manager");
+            }
+        }
+
+        private vwAdmin admin;
+        public vwAdmin Admin
+        {
+            get
+            {
+                return admin;
+            }
+            set
+            {
+                admin = value;
+                OnPropertyChanged("Admin");
             }
         }
 
@@ -126,6 +143,16 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
                             loginScreen.Close();
                             managerWindow.ShowDialog();
                         }
+                    }
+                }
+                else if (seerviceAdmin.IsUser(UserName))
+                {
+                    Admin = seerviceAdmin.FindAdmin(UserName);
+                    if (SecurePasswordHasher.Verify(password, Admin.UserPassword))
+                    {
+                        ManagerWindow managerWindow = new ManagerWindow();
+                        loginScreen.Close();
+                        managerWindow.ShowDialog();
                     }
                 }
                 else

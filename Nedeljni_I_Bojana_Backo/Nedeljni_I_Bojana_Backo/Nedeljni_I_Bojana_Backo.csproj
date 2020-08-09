@@ -84,6 +84,7 @@
       <DependentUpon>ModelCompany.edmx</DependentUpon>
     </Compile>
     <Compile Include="SecurePasswordHasher.cs" />
+    <Compile Include="Services\SeerviceAdmin.cs" />
     <Compile Include="Services\ServiceEmployee.cs" />
     <Compile Include="Services\ServiceManager.cs" />
     <Compile Include="tblAdmin.cs">
@@ -107,6 +108,7 @@
     <Compile Include="tblWorker.cs">
       <DependentUpon>ModelCompany.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddAdminViewModel.cs" />
     <Compile Include="ViewModel\AddManagerViewModel.cs" />
     <Compile Include="ViewModel\LoginScreenViewModel.cs" />
     <Compile Include="ViewModel\ManagerWindowViewModel.cs" />
@@ -116,6 +118,9 @@
     <Compile Include="ViewModel\SignupManagerViewModel.cs" />
     <Compile Include="ViewModel\SignupViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AddAdmin.xaml.cs">
+      <DependentUpon>AddAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddManager.xaml.cs">
       <DependentUpon>AddManager.xaml</DependentUpon>
     </Compile>
@@ -153,6 +158,10 @@
     <Compile Include="vwWorker.cs">
       <DependentUpon>ModelCompany.tt</DependentUpon>
     </Compile>
+    <Page Include="View\AddAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

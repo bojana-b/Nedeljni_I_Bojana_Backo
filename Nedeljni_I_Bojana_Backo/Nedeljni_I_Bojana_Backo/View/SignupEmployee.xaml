@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nedeljni_I_Bojana_Backo.View"
         mc:Ignorable="d"
-        Title="Signup Employee" Height="350" Width="350" Background="AntiqueWhite">
+        Title="Signup Employee" Height="350" Width="350" WindowStartupLocation="CenterScreen" Background="AntiqueWhite">
     <Grid>
         <TextBlock FontSize="25" FontStyle="Italic" Foreground="RosyBrown">
             Not Implemented yet!
