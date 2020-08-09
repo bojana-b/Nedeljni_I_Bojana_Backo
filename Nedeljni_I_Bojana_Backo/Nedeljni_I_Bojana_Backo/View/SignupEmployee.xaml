@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nedeljni_I_Bojana_Backo.View"
         mc:Ignorable="d"
-        Title="SignupEmployee" Height="450" Width="800">
+        Title="Signup Employee" Height="350" Width="350" Background="AntiqueWhite">
     <Grid>
-        
+        <TextBlock FontSize="25" FontStyle="Italic" Foreground="RosyBrown">
+            Not Implemented yet!
+        </TextBlock>
+        <Button Margin="100, 140" Command="{Binding Cancel}">Go Back</Button>
     </Grid>
 </Window>

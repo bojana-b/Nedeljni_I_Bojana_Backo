@@ -22,23 +22,6 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
             passwordFromFile = passwordFromFileOpen;
         }
 
-        #region Properties
-       
-        //public string Error
-        //{
-        //    get { return null; }
-        //}
-
-        //public string this[string someProperty]
-        //{
-        //    get
-        //    {
-
-        //        return string.Empty;
-        //    }
-        //}
-        #endregion
-
         #region Commands
         private ICommand submit;
         public ICommand Submit
@@ -64,6 +47,7 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
 
                 if (password.Equals(passwordFile))
                 {
+                    MessageBox.Show("Password correct!");
                     SignupManager manager = new SignupManager();
                     passwordFromFile.Close();
                     manager.ShowDialog();

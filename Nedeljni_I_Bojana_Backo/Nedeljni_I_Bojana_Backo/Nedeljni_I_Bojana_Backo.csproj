@@ -84,6 +84,7 @@
       <DependentUpon>ModelCompany.edmx</DependentUpon>
     </Compile>
     <Compile Include="SecurePasswordHasher.cs" />
+    <Compile Include="Services\ServiceEmployee.cs" />
     <Compile Include="Services\ServiceManager.cs" />
     <Compile Include="tblAdmin.cs">
       <DependentUpon>ModelCompany.tt</DependentUpon>
