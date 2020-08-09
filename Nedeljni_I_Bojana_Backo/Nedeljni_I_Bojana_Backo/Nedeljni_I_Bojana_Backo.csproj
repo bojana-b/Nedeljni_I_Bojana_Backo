@@ -67,6 +67,7 @@
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="HintPasswordValidation.cs" />
     <Compile Include="JMBGValidation.cs" />
+    <Compile Include="ManagerPassword.cs" />
     <Compile Include="ModelCompany.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,6 +110,10 @@
     <Compile Include="ViewModel\LoginScreenViewModel.cs" />
     <Compile Include="ViewModel\ManagerWindowViewModel.cs" />
     <Compile Include="ViewModel\MasterWindowViewModel.cs" />
+    <Compile Include="ViewModel\PasswordFromFileViewModel.cs" />
+    <Compile Include="ViewModel\SignupEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\SignupManagerViewModel.cs" />
+    <Compile Include="ViewModel\SignupViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AddManager.xaml.cs">
       <DependentUpon>AddManager.xaml</DependentUpon>
@@ -125,6 +130,18 @@
     </Compile>
     <Compile Include="View\MasterWindow.xaml.cs">
       <DependentUpon>MasterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PasswordFromFile.xaml.cs">
+      <DependentUpon>PasswordFromFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Signup.xaml.cs">
+      <DependentUpon>Signup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SignupEmployee.xaml.cs">
+      <DependentUpon>SignupEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SignupManager.xaml.cs">
+      <DependentUpon>SignupManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="vwAdmin.cs">
       <DependentUpon>ModelCompany.tt</DependentUpon>
@@ -148,6 +165,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MasterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PasswordFromFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Signup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SignupEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SignupManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

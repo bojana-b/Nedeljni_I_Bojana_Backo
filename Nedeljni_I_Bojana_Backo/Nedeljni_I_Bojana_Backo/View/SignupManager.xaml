@@ -1,4 +1,4 @@
-﻿<Window x:Class="Nedeljni_I_Bojana_Backo.View.AddManager"
+﻿<Window x:Class="Nedeljni_I_Bojana_Backo.View.SignupManager"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Nedeljni_I_Bojana_Backo.View"
         mc:Ignorable="d"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="Add Manager" Height="800" Width="300" FontSize="14" Background="RosyBrown" WindowStartupLocation="CenterScreen">
+        Title="Add Manager" Height="760" Width="300" FontSize="14" Background="RosyBrown" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <x:Array Type="sys:String" x:Key="Gender">
             <sys:String>M</sys:String>
@@ -18,11 +18,6 @@
             <sys:String>Unmarried</sys:String>
             <sys:String>Married</sys:String>
             <sys:String>Divorced</sys:String>
-        </x:Array>
-        <x:Array Type="sys:String" x:Key="Level">
-            <sys:String>1</sys:String>
-            <sys:String>2</sys:String>
-            <sys:String>3</sys:String>
         </x:Array>
     </Window.Resources>
     <Grid>
@@ -55,18 +50,13 @@
                          Text="{Binding Manager.Username, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock>Password:</TextBlock>
                 <PasswordBox Name="txtPassword" Background="RosyBrown" Foreground="White" FontSize="18"/>
-                
+
                 <TextBlock>Email:</TextBlock>
                 <TextBox Background="RosyBrown" Foreground="White" 
                          Text="{Binding Manager.Email, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock>Password Hint:</TextBlock>
                 <TextBox Background="RosyBrown" Foreground="White" 
                          Text="{Binding Manager.ReservedPassword, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock>Level Of Responsibility:</TextBlock>
-                <ComboBox Background="RosyBrown"
-                          ItemsSource="{StaticResource ResourceKey=Level}"
-                          SelectedItem="{Binding Manager.LevelOfResponsibility, UpdateSourceTrigger=PropertyChanged}">
-                </ComboBox>
                 <TextBlock>Successful Projects:</TextBlock>
                 <TextBox Background="RosyBrown" Foreground="White" 
                          Text="{Binding Manager.SuccessfulProjects, UpdateSourceTrigger=PropertyChanged}"/>

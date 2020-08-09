@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Nedeljni_I_Bojana_Backo.View"
         mc:Ignorable="d"
         Title="Master Window" Background="AntiqueWhite" Height="320" Width="210" FontSize="14">
+    
     <Grid Margin="30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

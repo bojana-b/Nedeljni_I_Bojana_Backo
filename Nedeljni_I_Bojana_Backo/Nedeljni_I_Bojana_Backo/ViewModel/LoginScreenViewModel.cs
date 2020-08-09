@@ -2,6 +2,7 @@
 using Nedeljni_I_Bojana_Backo.Services;
 using Nedeljni_I_Bojana_Backo.View;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,16 +12,18 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
     class LoginScreenViewModel : ViewModelBase
     {
         LoginScreen loginScreen;
-        //PasswordValidation passwordValidation;
+        ManagerPassword managerPassword;
         ServiceManager serviceManager;
 
         public LoginScreenViewModel(LoginScreen loginScreenOpen)
         {
             loginScreen = loginScreenOpen;
-
-            //passwordValidation = new PasswordValidation();
             manager = new vwManager();
             serviceManager = new ServiceManager();
+
+            managerPassword = new ManagerPassword();
+            managerPassword.ApplicationStarted += WriteRandomStrToFile;
+            managerPassword.WriteToFile();
         }
         #region Properties
         private vwManager manager;
@@ -113,9 +116,16 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
                     Manager = serviceManager.FindManager(UserName);
                     if(SecurePasswordHasher.Verify(password, Manager.UserPassword) || password == Manager.ReservedPassword)
                     {
-                        ManagerWindow managerWindow = new ManagerWindow();
-                        loginScreen.Close();
-                        managerWindow.ShowDialog();
+                        if(Manager.LevelOfResponsibility == null)
+                        {
+                            MessageBox.Show("Can't login until the Admin assigns you a level of Responsability.");
+                        }
+                        else
+                        {
+                            ManagerWindow managerWindow = new ManagerWindow();
+                            loginScreen.Close();
+                            managerWindow.ShowDialog();
+                        }
                     }
                 }
                 else
@@ -132,6 +142,45 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
         {
             return true;
         }
+        // Signup button
+        private ICommand signUp;
+        public ICommand SignUp
+        {
+            get
+            {
+                if (signUp == null)
+                {
+                    signUp = new RelayCommand(param => SignupExecute(), param => CanCreateSigunExecute());
+                }
+                return signUp;
+            }
+        }
+        private void SignupExecute()
+        {
+            try
+            {
+                Signup signup = new Signup();
+                loginScreen.Close();
+                signup.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanCreateSigunExecute()
+        {
+            return true;
+        }
+        #endregion
+        void WriteRandomStrToFile(object source, string radnomStr)
+        {
+            using (StreamWriter sw = new StreamWriter(@"..\..\ManagerAccess.txt"))
+            {
+
+                sw.WriteLine(radnomStr);
+
+            }
+        }
     }
-    #endregion
 }

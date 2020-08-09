@@ -34,7 +34,7 @@ namespace Nedeljni_I_Bojana_Backo.Services
                     newManager.UserID = manager.UserID;
                     newManager.Email = manager.Email;
                     newManager.ReservedPassword = manager.ReservedPassword + "WPF";
-                    newManager.LevelOfResponsibility = "2";// manager.LevelOfResponsibility;
+                    newManager.LevelOfResponsibility = manager.LevelOfResponsibility;
                     newManager.SuccessfulProjects = manager.SuccessfulProjects;
                     newManager.Salary = "1200";
                     newManager.OfficeNumber = manager.OfficeNumber;
