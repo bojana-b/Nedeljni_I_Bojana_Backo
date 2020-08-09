@@ -46,6 +46,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -110,6 +111,7 @@
     </Compile>
     <Compile Include="ViewModel\AddAdminViewModel.cs" />
     <Compile Include="ViewModel\AddManagerViewModel.cs" />
+    <Compile Include="ViewModel\AllAdminsViewModel.cs" />
     <Compile Include="ViewModel\LoginScreenViewModel.cs" />
     <Compile Include="ViewModel\ManagerWindowViewModel.cs" />
     <Compile Include="ViewModel\MasterWindowViewModel.cs" />
@@ -123,6 +125,9 @@
     </Compile>
     <Compile Include="View\AddManager.xaml.cs">
       <DependentUpon>AddManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AllAdmins.xaml.cs">
+      <DependentUpon>AllAdmins.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
@@ -163,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AllAdmins.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

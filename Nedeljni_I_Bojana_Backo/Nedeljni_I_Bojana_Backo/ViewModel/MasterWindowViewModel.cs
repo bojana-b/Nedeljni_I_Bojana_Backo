@@ -168,6 +168,36 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
         {
             return true;
         }
+        // EditAdmin Button
+        private ICommand editAdmin;
+        public ICommand EditAdmin
+        {
+            get
+            {
+                if (editAdmin == null)
+                {
+                    editAdmin = new RelayCommand(param => editAdminExecute(), param => CanEditAdminExecute());
+                }
+                return editAdmin;
+            }
+        }
+        private void editAdminExecute()
+        {
+            try
+            {
+                AllAdmins allAdmin = new AllAdmins();
+                masterWindow.Close();
+                allAdmin.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanEditAdminExecute()
+        {
+            return true;
+        }
         #endregion
     }
 }
