@@ -81,7 +81,7 @@ namespace Nedeljni_I_Bojana_Backo.ViewModel
                     MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure that you want to change expiration date?",
                        "My App",
                         MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
-                    int adminID = admin.AdminID;
+                    //int adminID = admin.AdminID;
 
                     switch (result)
                     {
