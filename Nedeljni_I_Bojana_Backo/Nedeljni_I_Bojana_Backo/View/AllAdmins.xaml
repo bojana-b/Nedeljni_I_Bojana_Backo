@@ -33,7 +33,7 @@
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1" Height="auto" Width="auto">
             <DataGrid x:Name="DataGridResults" ItemsSource="{Binding AdminList, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding Order, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HeadersVisibility="Column"
+                      SelectedItem="{Binding Admin, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HeadersVisibility="Column"
                       AutoGenerateColumns="False" HorizontalGridLinesBrush="Black" BorderBrush="Black" Foreground="Black">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding AdminID}"/>
